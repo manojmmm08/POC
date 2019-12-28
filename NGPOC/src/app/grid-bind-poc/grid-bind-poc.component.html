@@ -1,0 +1,29 @@
+<h1>grid-bind-poc works!</h1>
+
+<label for="userName">User Name:</label>
+Emp Code <input type="text" class="form-control" placeholder="Employee code" name="empCode"  [(ngModel)]="empCode" >
+Emp Name <input type="text" class="form-control" placeholder="Employee Name" name="empName"  [(ngModel)]="empName" >
+Emp Type <input type="text" class="form-control" placeholder="Employee Type" name="empType"  [(ngModel)]="empType" >
+<table  mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true" maxWidth="400" >
+    <tr [ngClass]="'tblHeader'">
+
+        <td>Code</td>
+        <td>Name</td>
+        <td>Salary</td>
+        <td>Employee Type</td>
+        <td>Manager Name</td>
+        <td>Action</td>
+    </tr>
+    <tr *ngFor="let emp of empList" [ngClass]="emp.Code%2==0?'even':'odd'">
+
+        <td>{{emp.Code}}</td>
+        <td>{{emp.Name}}</td>
+        <td>{{emp.Salary}}</td>
+        <td>{{emp.EmpType}}</td>
+        <td>{{emp.ManagerName}}</td>
+        <td >
+            <a style="cursor:pointer" (click)="rptEdit(emp)"> <span class="glyphicon glyphicon-edit"></span></a> | 
+            <a style="cursor:pointer" (click)="rptEdit(emp)"> <span class="glyphicon glyphicon-remove"></span></a> | 
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,10 @@
+<h1>call-api works!</h1>
+<button id="getService" (click)="loadComments()">Get</button>
+<button id="postService" (click)="postComment()">Post</button>
+<button id="putService" (click)="putComment()">Put</button>
+
+<ul>
+    <li *ngFor="let comment of comments">
+      {{ comment.Code }}
+    </li>
+  </ul>

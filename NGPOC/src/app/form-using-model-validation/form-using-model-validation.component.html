@@ -1,0 +1,48 @@
+<h1>form-using-model-validation works!</h1>
+<form  #modelvalidationform="ngForm" (ngSubmit)="GetFormData(modelvalidationform.value,modelvalidationform.valid)">
+Name:<input id="name" name="name" class="form-control" 
+      required minlength="5" 
+      [(ngModel)]="name" #nameControl="ngModel" >
+      <small [hidden]="nameControl.valid || (nameControl.pristine && !modelvalidationform.submitted)">
+        Name is required (minimum 5 characters).
+    </small>
+<!-- <p>{{name}}</p> -->
+ID:<input id="id" name="id" class="form-control"
+      required minlength="4" 
+      [(ngModel)]="id" #idControl="ngModel" >
+      <small [hidden]="idControl.valid || (idControl.pristine && !modelvalidationform.submitted)">
+        ID is required (minimum 4 characters).
+    </small>
+      <div *ngIf="idControl.errors?.required"> 
+        ID required. 
+    </div>
+    <div *ngIf="idControl.errors?.minlength"> 
+        Name must be at least 4 characters long.
+    </div> 
+    
+<select id="dd1" name="dd1" appSelectValidator #dd1="ngModel" [ngModel]="dd1" #dd1Control="ngModel" required>
+    <option value="-1">Select</option>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+  <div *ngIf="dd1Control.invalid"> Please enter a valid value </div> 
+
+    <input type="radio" value="male" name="gender" [ngModel]="male" required #gender="ngModel"> Male
+    <input type="radio" value="female" name="gender" [ngModel]="female" required #gender="ngModel"> Female
+
+    <div *ngIf="gender.invalid"> 
+	    Gender required. 
+    </div> 
+    <small [hidden]="gender.valid || (gender.pristine && !modelvalidationform.submitted)">
+        Gender is required 
+    </small>
+
+    <input type="submit"  name="nbsfnsdf" text="djgf">
+</form >
+<!-- <form #form2data="ngForm">
+    <input id="name" name="name" class="form-control"
+      [(ngModel)]="name"  >
+      <input type="submit"  name="nzbchz" text="test" (click)="callform2data(form2data.value,form2data.valid)">
+</form> -->
